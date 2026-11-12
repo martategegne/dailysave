@@ -17,6 +17,7 @@ import { goalController } from './controllers/goal.controller.js';
 import { debtController } from './controllers/debt.controller.js';
 import { syncController } from './controllers/sync.controller.js';
 import { recurringController } from './controllers/recurring.controller.js';
+import { communityController } from './controllers/community.controller.js';
 
 /**
  * Creates and registers all application routes on the native Router.
@@ -101,6 +102,15 @@ export function buildRouter() {
   router.patch(`${prefix}/recurring-transactions/:id`, authenticateToken, recurringController.updateRecurring);
   router.delete(`${prefix}/recurring-transactions/:id`, authenticateToken, recurringController.deleteRecurring);
   router.post(`${prefix}/recurring-transactions/:id/generate`, authenticateToken, recurringController.generateTransaction);
+
+  // --- Community Savings Groups Routes (Equb / Circles) ---
+  router.get(`${prefix}/community/groups`, authenticateToken, communityController.getGroups);
+  router.post(`${prefix}/community/groups`, authenticateToken, communityController.createGroup);
+  router.get(`${prefix}/community/groups/:id`, authenticateToken, communityController.getGroupById);
+  router.post(`${prefix}/community/groups/:id/invite`, authenticateToken, communityController.inviteMember);
+  router.post(`${prefix}/community/groups/:id/contributions`, authenticateToken, communityController.addContribution);
+  router.post(`${prefix}/community/groups/:id/expenses`, authenticateToken, communityController.addExpense);
+  router.get(`${prefix}/community/groups/:id/report`, authenticateToken, communityController.getGroupReport);
 
   // --- Offline Synchronization Routes ---
   router.post(`${prefix}/sync/push`, authenticateToken, syncController.push);
