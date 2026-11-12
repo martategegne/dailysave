@@ -16,6 +16,7 @@ import { budgetController } from './controllers/budget.controller.js';
 import { goalController } from './controllers/goal.controller.js';
 import { debtController } from './controllers/debt.controller.js';
 import { syncController } from './controllers/sync.controller.js';
+import { recurringController } from './controllers/recurring.controller.js';
 
 /**
  * Creates and registers all application routes on the native Router.
@@ -92,6 +93,14 @@ export function buildRouter() {
   router.patch(`${prefix}/debts/:id`, authenticateToken, debtController.updateDebt);
   router.delete(`${prefix}/debts/:id`, authenticateToken, debtController.deleteDebt);
   router.post(`${prefix}/debts/:id/payments`, authenticateToken, debtController.recordPayment);
+
+  // --- Recurring Transactions Routes ---
+  router.get(`${prefix}/recurring-transactions`, authenticateToken, recurringController.getRecurring);
+  router.post(`${prefix}/recurring-transactions`, authenticateToken, recurringController.createRecurring);
+  router.get(`${prefix}/recurring-transactions/:id`, authenticateToken, recurringController.getRecurringById);
+  router.patch(`${prefix}/recurring-transactions/:id`, authenticateToken, recurringController.updateRecurring);
+  router.delete(`${prefix}/recurring-transactions/:id`, authenticateToken, recurringController.deleteRecurring);
+  router.post(`${prefix}/recurring-transactions/:id/generate`, authenticateToken, recurringController.generateTransaction);
 
   // --- Offline Synchronization Routes ---
   router.post(`${prefix}/sync/push`, authenticateToken, syncController.push);
