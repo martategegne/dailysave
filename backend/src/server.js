@@ -18,6 +18,7 @@ import { debtController } from './controllers/debt.controller.js';
 import { syncController } from './controllers/sync.controller.js';
 import { recurringController } from './controllers/recurring.controller.js';
 import { communityController } from './controllers/community.controller.js';
+import { notificationController } from './controllers/notification.controller.js';
 
 /**
  * Creates and registers all application routes on the native Router.
@@ -111,6 +112,13 @@ export function buildRouter() {
   router.post(`${prefix}/community/groups/:id/contributions`, authenticateToken, communityController.addContribution);
   router.post(`${prefix}/community/groups/:id/expenses`, authenticateToken, communityController.addExpense);
   router.get(`${prefix}/community/groups/:id/report`, authenticateToken, communityController.getGroupReport);
+
+  // --- Notifications & Reminders Routes ---
+  router.get(`${prefix}/notifications`, authenticateToken, notificationController.getNotifications);
+  router.post(`${prefix}/notifications`, authenticateToken, notificationController.createNotification);
+  router.patch(`${prefix}/notifications/:id/read`, authenticateToken, notificationController.markAsRead);
+  router.post(`${prefix}/notifications/mark-all-read`, authenticateToken, notificationController.markAllAsRead);
+  router.delete(`${prefix}/notifications/:id`, authenticateToken, notificationController.deleteNotification);
 
   // --- Offline Synchronization Routes ---
   router.post(`${prefix}/sync/push`, authenticateToken, syncController.push);
