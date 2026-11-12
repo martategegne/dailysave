@@ -1,30 +1,30 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
+import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:dailysave/main.dart';
+import 'package:dailysave/app/app.dart';
+import 'package:dailysave/core/database/app_database.dart';
+import 'package:dailysave/features/transactions/data/datasources/transaction_local_data_source.dart';
+import 'package:dailysave/features/transactions/data/repositories/transaction_repository_impl.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  group('DailySave Application Tests', () {
+    testWidgets('DailySave application starts successfully',
+        (WidgetTester tester) async {
+      final db = AppDatabase(NativeDatabase.memory());
+      final dataSource = TransactionLocalDataSourceImpl(db);
+      final repository = TransactionRepositoryImpl(dataSource);
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+      // Build the DailySave application with test database
+      await tester.pumpWidget(DailySaveApp(
+        database: db,
+        transactionRepository: repository,
+      ));
+      await tester.pumpAndSettle();
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+      // Verify that the application widget is present.
+      expect(find.byType(DailySaveApp), findsOneWidget);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+      await db.close();
+    });
   });
 }

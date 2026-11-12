@@ -1,0 +1,30 @@
+{
+  "name": "dailysave-backend",
+  "version": "1.0.0",
+  "description": "DailySave Native Node.js HTTP & PostgreSQL Backend",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test test/**/*.test.js",
+    "migrate": "node src/database/migrate.js"
+  },
+  "keywords": [
+    "dailysave",
+    "finance",
+    "nodejs",
+    "native-http",
+    "postgresql",
+    "clean-architecture",
+    "offline-sync"
+  ],
+  "author": "DailySave Engineering",
+  "license": "ISC",
+  "dependencies": {
+    "argon2": "^0.41.1",
+    "dotenv": "^16.4.7",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.13.3"
+  }
+}

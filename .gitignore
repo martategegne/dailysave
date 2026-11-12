@@ -1,3 +1,14 @@
+# Environment & Secrets (Crucial for backend security)
+.env
+.env.local
+.env.production
+
+# Node.js Dependencies & Build Output
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+
 # Miscellaneous
 *.class
 *.log
