@@ -66,3 +66,26 @@ DailySave is designed as an **offline-first, highly accessible, secure financial
 2. **Formula Integrity:** `Daily Savings = Daily Income - Daily Expenses`.
 3. **Reserves Distinction:** Net calculated savings are strictly distinguished from actual savings deposits into designated reserve accounts.
 4. **Loan Repayments Isolation:** Debt payments are recorded exclusively in `debt_payments` and reduce outstanding debt principal without inflating operational income or expenses.
+
+---
+
+## 4. AI Financial Assistant Architecture & Models
+
+The AI diagnostic engine in DailySave provides spending pattern analysis, anomaly detection, and savings guidance while prioritizing **financial accuracy, privacy, and zero hallucination**.
+
+### A. Core Architecture: Deterministic Statistical Intelligence
+- **Implementation:** `backend/src/services/ai_assistant.service.js` and `backend/src/controllers/ai.controller.js`.
+- **Algorithms:**
+  1. **Rolling-Window Velocity & $\Delta\%$ Trend Detection:** Evaluates 30-day month-over-month rate of change to flag acceleration in total expenditure ($> 15\%$).
+  2. **Pareto Category Concentration:** Analyzes category distribution to identify expenditure concentration (e.g., when a single discretionary category exceeds $40\%$ of monthly outflow).
+  3. **Savings Ratio Classification:** Computes $R_{savings} = (Income - Expense) / Income$ into discrete financial health tiers (Deficit, Opportunity, Healthy).
+- **Authoritative Data Grounding:** All metrics originate from ACID PostgreSQL aggregations using integer `amount_cents` (`BIGINT`).
+
+### B. Technical Rationale
+1. **Zero Hallucination:** Eliminates arithmetic errors and hallucinated transactions common in generative token predictors.
+2. **Privacy & Data Sovereignty:** Prevents transmission of sensitive financial history to external third parties without user opt-in (`ai_consent_enabled`).
+3. **Low-Resource & Offline Capability:** Runs in $<5\text{ ms}$ on local devices or resource-constrained servers.
+
+### C. Advanced Local Machine Learning Roadmap
+- **Time-Series Forecasting:** Facebook Prophet / Holt-Winters for predictive cashflow forecasting and seasonal Ethiopian holiday expenditure trends.
+- **Unsupervised Anomaly Detection:** Isolation Forest and Local Outlier Factor (LOF) executed locally or on-premise without reliance on external cloud AI providers.
