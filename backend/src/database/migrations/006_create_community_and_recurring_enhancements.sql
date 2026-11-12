@@ -5,6 +5,7 @@
 ALTER TABLE recurring_transactions ADD COLUMN IF NOT EXISTS account VARCHAR(100) NOT NULL DEFAULT 'Cash Wallet';
 ALTER TABLE recurring_transactions ADD COLUMN IF NOT EXISTS last_executed_date DATE;
 ALTER TABLE recurring_transactions ADD COLUMN IF NOT EXISTS requires_review BOOLEAN NOT NULL DEFAULT TRUE;
+ALTER TABLE user_preferences ADD COLUMN IF NOT EXISTS ai_consent_enabled BOOLEAN NOT NULL DEFAULT FALSE;
 
 -- 2. Community Groups Table
 CREATE TABLE IF NOT EXISTS community_groups (

@@ -19,6 +19,7 @@ import { syncController } from './controllers/sync.controller.js';
 import { recurringController } from './controllers/recurring.controller.js';
 import { communityController } from './controllers/community.controller.js';
 import { notificationController } from './controllers/notification.controller.js';
+import { aiController } from './controllers/ai.controller.js';
 
 /**
  * Creates and registers all application routes on the native Router.
@@ -119,6 +120,11 @@ export function buildRouter() {
   router.patch(`${prefix}/notifications/:id/read`, authenticateToken, notificationController.markAsRead);
   router.post(`${prefix}/notifications/mark-all-read`, authenticateToken, notificationController.markAllAsRead);
   router.delete(`${prefix}/notifications/:id`, authenticateToken, notificationController.deleteNotification);
+
+  // --- AI Financial Assistant Routes (Privacy-Gated) ---
+  router.get(`${prefix}/ai/consent`, authenticateToken, aiController.getConsent);
+  router.post(`${prefix}/ai/consent`, authenticateToken, aiController.setConsent);
+  router.get(`${prefix}/ai/insights`, authenticateToken, aiController.getInsights);
 
   // --- Offline Synchronization Routes ---
   router.post(`${prefix}/sync/push`, authenticateToken, syncController.push);
