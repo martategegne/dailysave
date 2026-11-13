@@ -1,2 +1,2 @@
-# Cloudflare Pages & Netlify Single Page Application (SPA) redirect rule
-/*    /index.html   200
+# Cloudflare Pages Single Page Application (SPA) rule (avoids .html stripping infinite loop)
+/*    /   200
