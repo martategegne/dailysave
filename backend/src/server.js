@@ -21,6 +21,7 @@ import { communityController } from './controllers/community.controller.js';
 import { notificationController } from './controllers/notification.controller.js';
 import { aiController } from './controllers/ai.controller.js';
 import { workspaceController } from './controllers/workspace.controller.js';
+import { subscriptionController } from './controllers/subscription.controller.js';
 
 /**
  * Creates and registers all application routes on the native Router.
@@ -141,6 +142,13 @@ export function buildRouter() {
   router.delete(`${prefix}/workspaces/:id/members/:memberUserId`, authenticateToken, workspaceController.removeMember);
   router.post(`${prefix}/workspaces/:id/transfer-ownership`, authenticateToken, workspaceController.transferOwnership);
   router.delete(`${prefix}/workspaces/:id`, authenticateToken, workspaceController.deleteWorkspace);
+
+  // --- Subscriptions & Entitlements Routes ---
+  router.get(`${prefix}/subscriptions/current`, authenticateToken, subscriptionController.getCurrent);
+  router.get(`${prefix}/subscriptions/plans`, authenticateToken, subscriptionController.listPlans);
+  router.post(`${prefix}/subscriptions/change-plan`, authenticateToken, subscriptionController.changePlan);
+  router.post(`${prefix}/subscriptions/cancel`, authenticateToken, subscriptionController.cancel);
+  router.get(`${prefix}/subscriptions/invoices`, authenticateToken, subscriptionController.listInvoices);
 
   return router;
 }
