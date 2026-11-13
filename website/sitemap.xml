@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- 1. Home -->
+  <url>
+    <loc>https://www.dailysave.et/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.dailysave.et/"/>
+    <xhtml:link rel="alternate" hreflang="am" href="https://www.dailysave.et/am/"/>
+    <xhtml:link rel="alternate" hreflang="om" href="https://www.dailysave.et/om/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.dailysave.et/"/>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 2. Features -->
+  <url>
+    <loc>https://www.dailysave.et/features.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.dailysave.et/features.html"/>
+    <xhtml:link rel="alternate" hreflang="am" href="https://www.dailysave.et/am/features.html"/>
+    <xhtml:link rel="alternate" hreflang="om" href="https://www.dailysave.et/om/features.html"/>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 3. Personal Finance -->
+  <url>
+    <loc>https://www.dailysave.et/personal-finance.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.dailysave.et/personal-finance.html"/>
+    <xhtml:link rel="alternate" hreflang="am" href="https://www.dailysave.et/am/personal-finance.html"/>
+    <xhtml:link rel="alternate" hreflang="om" href="https://www.dailysave.et/om/personal-finance.html"/>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 4. Community Savings (Equb) -->
+  <url>
+    <loc>https://www.dailysave.et/community-savings.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.dailysave.et/community-savings.html"/>
+    <xhtml:link rel="alternate" hreflang="am" href="https://www.dailysave.et/am/community-savings.html"/>
+    <xhtml:link rel="alternate" hreflang="om" href="https://www.dailysave.et/om/community-savings.html"/>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 5. Student Finance -->
+  <url>
+    <loc>https://www.dailysave.et/student-finance.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.dailysave.et/student-finance.html"/>
+    <xhtml:link rel="alternate" hreflang="am" href="https://www.dailysave.et/am/student-finance.html"/>
+    <xhtml:link rel="alternate" hreflang="om" href="https://www.dailysave.et/om/student-finance.html"/>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 6. Family Finance -->
+  <url>
+    <loc>https://www.dailysave.et/family-finance.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.dailysave.et/family-finance.html"/>
+    <xhtml:link rel="alternate" hreflang="am" href="https://www.dailysave.et/am/family-finance.html"/>
+    <xhtml:link rel="alternate" hreflang="om" href="https://www.dailysave.et/om/family-finance.html"/>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 7. Small Business Finance -->
+  <url>
+    <loc>https://www.dailysave.et/business-finance.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.dailysave.et/business-finance.html"/>
+    <xhtml:link rel="alternate" hreflang="am" href="https://www.dailysave.et/am/business-finance.html"/>
+    <xhtml:link rel="alternate" hreflang="om" href="https://www.dailysave.et/om/business-finance.html"/>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 8. Pricing -->
+  <url>
+    <loc>https://www.dailysave.et/pricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.dailysave.et/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="am" href="https://www.dailysave.et/am/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="om" href="https://www.dailysave.et/om/pricing.html"/>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 9. FAQ -->
+  <url>
+    <loc>https://www.dailysave.et/faq.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.dailysave.et/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="am" href="https://www.dailysave.et/am/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="om" href="https://www.dailysave.et/om/faq.html"/>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 10. About -->
+  <url>
+    <loc>https://www.dailysave.et/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.dailysave.et/about.html"/>
+    <xhtml:link rel="alternate" hreflang="am" href="https://www.dailysave.et/am/about.html"/>
+    <xhtml:link rel="alternate" hreflang="om" href="https://www.dailysave.et/om/about.html"/>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- 11. Help Center -->
+  <url>
+    <loc>https://www.dailysave.et/help.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- 12. Contact -->
+  <url>
+    <loc>https://www.dailysave.et/contact.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- 13. Privacy Policy -->
+  <url>
+    <loc>https://www.dailysave.et/privacy.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- 14. Terms of Service -->
+  <url>
+    <loc>https://www.dailysave.et/terms.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+</urlset>

@@ -1,0 +1,10 @@
+# DailySave Public Website Robots.txt
+# Domain: https://www.dailysave.et
+
+User-agent: *
+Allow: /
+Disallow: /cdn-cgi/
+Disallow: /private/
+
+# XML Sitemap Location
+Sitemap: https://www.dailysave.et/sitemap.xml

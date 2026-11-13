@@ -1,0 +1,7 @@
+# DailySave Application Robots.txt
+# Domain: https://app.dailysave.et
+# PURPOSE: STRICT PRIVACY ENFORCEMENT
+# Keep authenticated dashboards, transactions, and user ledgers out of all search engines.
+
+User-agent: *
+Disallow: /
