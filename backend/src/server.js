@@ -20,6 +20,7 @@ import { recurringController } from './controllers/recurring.controller.js';
 import { communityController } from './controllers/community.controller.js';
 import { notificationController } from './controllers/notification.controller.js';
 import { aiController } from './controllers/ai.controller.js';
+import { workspaceController } from './controllers/workspace.controller.js';
 
 /**
  * Creates and registers all application routes on the native Router.
@@ -129,6 +130,17 @@ export function buildRouter() {
   // --- Offline Synchronization Routes ---
   router.post(`${prefix}/sync/push`, authenticateToken, syncController.push);
   router.get(`${prefix}/sync/pull`, authenticateToken, syncController.pull);
+
+  // --- Workspaces & Multi-Tenant RBAC Routes ---
+  router.get(`${prefix}/workspaces`, authenticateToken, workspaceController.listWorkspaces);
+  router.post(`${prefix}/workspaces`, authenticateToken, workspaceController.createWorkspace);
+  router.get(`${prefix}/workspaces/:id`, authenticateToken, workspaceController.getWorkspace);
+  router.post(`${prefix}/workspaces/:id/invitations`, authenticateToken, workspaceController.inviteMember);
+  router.post(`${prefix}/workspaces/invitations/:token/accept`, authenticateToken, workspaceController.acceptInvitation);
+  router.patch(`${prefix}/workspaces/:id/members/:memberUserId`, authenticateToken, workspaceController.updateMemberRole);
+  router.delete(`${prefix}/workspaces/:id/members/:memberUserId`, authenticateToken, workspaceController.removeMember);
+  router.post(`${prefix}/workspaces/:id/transfer-ownership`, authenticateToken, workspaceController.transferOwnership);
+  router.delete(`${prefix}/workspaces/:id`, authenticateToken, workspaceController.deleteWorkspace);
 
   return router;
 }
