@@ -176,6 +176,11 @@ flutter analyze
 - [Domain Architecture & DNS Configuration](docs/dns-and-domains.md)
 - [Google Search Console & Privacy Analytics](docs/search-console-and-analytics.md)
 - [Content Strategy & Ethiopian Financial Literacy](docs/content-strategy.md)
+- [Role-Based Access Control & Permission Matrix](docs/roles-and-permissions.md)
+- [Workspace Architecture & Multi-Tenant Isolation](docs/workspace-architecture.md)
+- [Business Model & Monetization Strategy](docs/business-model.md)
+- [Subscription System & Feature Entitlements](docs/subscription-system.md)
+- [Payment Gateway Integration & Ethiopian Provider Evaluation](docs/billing-integration.md)
 
 ---
 
