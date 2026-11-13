@@ -102,11 +102,18 @@ dailysave/
 │   │   ├── database/migrations/    # Versioned SQL DDL Migrations (001 to 006)
 │   │   └── server.js               # Native http.createServer Entrypoint
 │   └── test/                       # 48 Automated Node.js Tests (100% Passing)
+├── website/                        # SEO-Friendly Multilingual Public Website (14 Pages)
+│   ├── blog/                       # Financial Literacy & Educational Guides
+│   ├── css/styles.css              # Accessible WCAG 2.2 AA Stylesheet
+│   ├── js/site.js                  # Accessible Language Switcher & FAQ Accordion
+│   ├── sitemap.xml                 # Search Engine XML Sitemap with Hreflang
+│   └── robots.txt                  # Public Web Crawling Directives
 ├── lib/                            # Flutter Client (Web, Android, iOS)
 │   ├── app/                        # App root & GoRouter Navigation
 │   ├── core/                       # Database (Drift), Theme, Accessibility, L10n, Sync
 │   └── features/                   # Feature-based Clean Architecture Modules
-└── test/                           # 30 Automated Flutter Tests (100% Passing)
+├── scripts/                        # Production Verification & Backup Utilities
+└── test/                           # 34 Automated Flutter Tests (100% Passing)
 ```
 
 ---
@@ -164,7 +171,11 @@ flutter analyze
 - [REST API Contract](docs/api-contract.md)
 - [Security & Privacy Review](docs/security.md)
 - [Accessibility Guide (WCAG 2.2 AA)](docs/accessibility.md)
-- [Production Deployment Manual](docs/deployment.md)
+- [Production Operations & Deployment Manual](docs/production-deployment.md)
+- [Cloud Hosting & Free-Tier Provider Matrix](docs/hosting-comparison.md)
+- [Domain Architecture & DNS Configuration](docs/dns-and-domains.md)
+- [Google Search Console & Privacy Analytics](docs/search-console-and-analytics.md)
+- [Content Strategy & Ethiopian Financial Literacy](docs/content-strategy.md)
 
 ---
 
