@@ -1,13 +1,13 @@
 # Render Blueprint Infrastructure as Code for DailySave
-# Deploy backend web service and PostgreSQL database with zero manual setup
+# Deploys backend web service connected to Neon PostgreSQL
 services:
   - type: web
     name: dailysave-api
     runtime: node
     plan: free
-    region: frankfurt # Low latency to East Africa / Ethiopia
+    region: frankfurt # Matches Neon Frankfurt region
     rootDir: backend
-    buildCommand: npm ci --only=production
+    buildCommand: npm ci --omit=dev
     startCommand: node src/database/migrate.js && node src/server.js
     healthCheckPath: /health
     autoDeploy: true
@@ -19,27 +19,17 @@ services:
       - key: API_PREFIX
         value: /api/v1
       - key: ALLOWED_ORIGINS
-        value: https://app.dailysave.et,https://www.dailysave.et,https://dailysave.pages.dev
+        value: "*"
       - key: DB_HOST
-        fromDatabase:
-          name: dailysave-db
-          property: host
+        value: ep-flat-leaf-b97rns7t-pooler.c-7.eu-central-1.aws.neon.tech
       - key: DB_PORT
-        fromDatabase:
-          name: dailysave-db
-          property: port
+        value: "5432"
       - key: DB_NAME
-        fromDatabase:
-          name: dailysave-db
-          property: database
+        value: neondb
       - key: DB_USER
-        fromDatabase:
-          name: dailysave-db
-          property: user
+        value: neondb_owner
       - key: DB_PASSWORD
-        fromDatabase:
-          name: dailysave-db
-          property: password
+        value: npg_ZtG0xwe3oIQB
       - key: DB_SSL
         value: "true"
       - key: JWT_ACCESS_SECRET
@@ -54,10 +44,3 @@ services:
         value: "900000"
       - key: RATE_LIMIT_MAX_REQUESTS
         value: "100"
-
-databases:
-  - name: dailysave-db
-    plan: free
-    region: frankfurt
-    databaseName: dailysave_prod
-    user: dailysave_admin
