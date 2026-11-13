@@ -22,6 +22,7 @@ import { notificationController } from './controllers/notification.controller.js
 import { aiController } from './controllers/ai.controller.js';
 import { workspaceController } from './controllers/workspace.controller.js';
 import { subscriptionController } from './controllers/subscription.controller.js';
+import { businessDashboardController } from './controllers/business_dashboard.controller.js';
 
 /**
  * Creates and registers all application routes on the native Router.
@@ -149,6 +150,9 @@ export function buildRouter() {
   router.post(`${prefix}/subscriptions/change-plan`, authenticateToken, subscriptionController.changePlan);
   router.post(`${prefix}/subscriptions/cancel`, authenticateToken, subscriptionController.cancel);
   router.get(`${prefix}/subscriptions/invoices`, authenticateToken, subscriptionController.listInvoices);
+
+  // --- Platform Business Intelligence & Subscription Metrics ---
+  router.get(`${prefix}/business/analytics`, authenticateToken, businessDashboardController.getMetrics);
 
   return router;
 }
