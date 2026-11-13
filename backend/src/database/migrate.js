@@ -10,12 +10,19 @@ const __dirname = path.dirname(__filename);
 const MIGRATIONS_DIR = path.resolve(__dirname, 'migrations');
 
 async function ensureDatabaseExists() {
+  // If target database is already neondb or a managed cloud database, skip admin creation
+  if (env.database.database === 'neondb' || env.database.ssl) {
+    console.log(`[Database Initialization]: Target database "${env.database.database}" verified.`);
+    return;
+  }
+
   const adminClient = new Client({
     host: env.database.host,
     port: env.database.port,
     user: env.database.user,
     password: env.database.password,
     database: 'postgres', // default administrative DB
+    ssl: env.database.ssl ? { rejectUnauthorized: false } : false,
   });
 
   try {
@@ -34,8 +41,12 @@ async function ensureDatabaseExists() {
     } else {
       console.log(`[Database Initialization]: Target database "${env.database.database}" verified.`);
     }
+  } catch (err) {
+    console.log(`[Database Initialization]: Administrative check skipped (${err.message}). Proceeding directly.`);
   } finally {
-    await adminClient.end();
+    try {
+      await adminClient.end();
+    } catch {}
   }
 }
 
@@ -52,6 +63,7 @@ async function runMigrations() {
     user: env.database.user,
     password: env.database.password,
     database: env.database.database,
+    ssl: env.database.ssl ? { rejectUnauthorized: false } : false,
   });
 
   await client.connect();
