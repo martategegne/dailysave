@@ -8,6 +8,7 @@ import '../../features/budgets/presentation/pages/budgets_page.dart';
 import '../../features/dashboard/presentation/pages/dashboard_page.dart';
 import '../../features/debts/presentation/pages/debts_page.dart';
 import '../../features/goals/presentation/pages/goals_page.dart';
+import '../../features/onboarding/presentation/pages/onboarding_page.dart';
 import '../../features/reports/presentation/pages/reports_page.dart';
 import '../../features/savings/presentation/pages/savings_page.dart';
 import '../../features/transactions/presentation/pages/transaction_history_page.dart';
@@ -26,6 +27,7 @@ class AppRouter {
   static const String reportsPath = '/reports';
   static const String accountsPath = '/accounts';
   static const String settingsPath = '/settings';
+  static const String onboardingPath = '/onboarding';
 
   static final GoRouter router = GoRouter(
     initialLocation: dashboardPath,
@@ -75,6 +77,11 @@ class AppRouter {
         path: settingsPath,
         name: 'settings',
         builder: (context, state) => const _PlaceholderFeaturePage(title: 'Settings'),
+      ),
+      GoRoute(
+        path: onboardingPath,
+        name: 'onboarding',
+        builder: (context, state) => OnboardingPage(database: context.read<AppDatabase>()),
       ),
     ],
   );
