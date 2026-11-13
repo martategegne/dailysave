@@ -144,4 +144,28 @@
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
+
+  <!-- 15. Guide: Managing Daily Expenses -->
+  <url>
+    <loc>https://www.dailysave.et/blog/managing-daily-expenses-in-ethiopia.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 16. Guide: Modern Equb -->
+  <url>
+    <loc>https://www.dailysave.et/blog/equb-guide-community-savings.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 17. Guide: Student Budgeting -->
+  <url>
+    <loc>https://www.dailysave.et/blog/student-budgeting-ethiopian-birr.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
