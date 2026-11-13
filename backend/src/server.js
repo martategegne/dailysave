@@ -23,6 +23,7 @@ import { aiController } from './controllers/ai.controller.js';
 import { workspaceController } from './controllers/workspace.controller.js';
 import { subscriptionController } from './controllers/subscription.controller.js';
 import { businessDashboardController } from './controllers/business_dashboard.controller.js';
+import { feedbackController } from './controllers/feedback.controller.js';
 
 /**
  * Creates and registers all application routes on the native Router.
@@ -153,6 +154,10 @@ export function buildRouter() {
 
   // --- Platform Business Intelligence & Subscription Metrics ---
   router.get(`${prefix}/business/analytics`, authenticateToken, businessDashboardController.getMetrics);
+
+  // --- Beta Feedback, Bug Reports & Satisfaction Surveys ---
+  router.post(`${prefix}/feedback`, feedbackController.submitFeedback);
+  router.get(`${prefix}/feedback`, authenticateToken, feedbackController.listFeedback);
 
   return router;
 }

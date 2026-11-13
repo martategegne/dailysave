@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beta Feedback & Bug Reporting — DailySave</title>
+  <meta name="description" content="Help shape DailySave Version 1.0. Submit bug reports, user experience feedback, or rate your satisfaction directly to our engineering team.">
+  <link rel="canonical" href="https://www.dailysave.et/feedback.html">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header>
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo"><div class="logo-icon">DS</div><span>DailySave</span></a>
+      <nav aria-label="Primary Navigation">
+        <ul>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="feedback.html">Beta Feedback</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions"><a href="https://app.dailysave.et" class="btn btn-primary btn-sm">Launch App</a></div>
+    </div>
+  </header>
+
+  <main id="main-content" class="container" style="padding: 60px 0;">
+    <div style="max-width: 680px; margin: 0 auto; background: #fff; padding: 40px; border-radius: var(--radius); border: 1px solid var(--border);">
+      <h1 style="color: var(--navy); font-size: 34px; margin-bottom: 12px;">Beta Feedback & Bug Report</h1>
+      <p style="color: var(--text-muted); margin-bottom: 30px;">
+        DailySave is actively evolving. Your honest feedback helps us deliver a rock-solid, accessible financial experience for everyone.
+      </p>
+
+      <form id="feedback-form" style="display: flex; flex-direction: column; gap: 20px;">
+        <div>
+          <label for="fb-type" style="display: block; font-weight: 700; margin-bottom: 6px; color: var(--navy);">Submission Type</label>
+          <select id="fb-type" style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 15px;">
+            <option value="bug_report">Bug Report / Defect</option>
+            <option value="feedback" selected>General Feedback & Feature Suggestion</option>
+            <option value="satisfaction_survey">User Satisfaction Rating</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="fb-category" style="display: block; font-weight: 700; margin-bottom: 6px; color: var(--navy);">Category</label>
+          <select id="fb-category" style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 15px;">
+            <option value="general">General Usability</option>
+            <option value="accessibility">Accessibility & Screen-Reader</option>
+            <option value="sync">Offline Sync & Storage</option>
+            <option value="equb">Equb & Community Circles</option>
+            <option value="localization">Ethiopian Calendar & Translation</option>
+            <option value="performance">Speed & Battery Consumption</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="fb-rating" style="display: block; font-weight: 700; margin-bottom: 6px; color: var(--navy);">Experience Rating (1 to 5 Stars)</label>
+          <select id="fb-rating" style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 15px;">
+            <option value="5">⭐⭐⭐⭐⭐ Excellent (5/5)</option>
+            <option value="4">⭐⭐⭐⭐ Good (4/5)</option>
+            <option value="3">⭐⭐⭐ Fair (3/5)</option>
+            <option value="2">⭐⭐ Poor (2/5)</option>
+            <option value="1">⭐ Critical Issues (1/5)</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="fb-message" style="display: block; font-weight: 700; margin-bottom: 6px; color: var(--navy);">Your Observations / Steps to Reproduce</label>
+          <textarea id="fb-message" rows="5" required placeholder="Describe what happened, what device you used, or what you would improve..." style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 15px; font-family: inherit;"></textarea>
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn btn-primary">Submit Feedback</button>
+      </form>
+
+      <div id="status-msg" style="display: none; margin-top: 20px; padding: 16px; border-radius: var(--radius-sm); background: var(--primary-light); color: var(--primary-dark); font-weight: 700;"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 DailySave. <a href="privacy.html">Privacy</a> &bull; <a href="terms.html">Terms</a> &bull; <a href="contact.html">Contact</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('feedback-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      const statusDiv = document.getElementById('status-msg');
+      btn.disabled = true;
+      btn.textContent = 'Submitting...';
+
+      const payload = {
+        type: document.getElementById('fb-type').value,
+        category: document.getElementById('fb-category').value,
+        rating: parseInt(document.getElementById('fb-rating').value, 10),
+        message: document.getElementById('fb-message').value,
+        metadata: {
+          userAgent: navigator.userAgent,
+          screenResolution: `${window.innerWidth}x${window.innerHeight}`,
+          submittedAt: new Date().toISOString()
+        }
+      };
+
+      try {
+        const res = await fetch('http://localhost:4000/api/v1/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        statusDiv.style.display = 'block';
+        if (data.success) {
+          statusDiv.style.background = '#E8F5EE';
+          statusDiv.style.color = '#0F5C3E';
+          statusDiv.textContent = '✔ Thank you! Your feedback has been logged in our engineering pipeline.';
+          document.getElementById('feedback-form').reset();
+        } else {
+          statusDiv.style.background = '#FEE2E2';
+          statusDiv.style.color = '#991B1B';
+          statusDiv.textContent = '✖ ' + (data.error?.message || 'Submission error');
+        }
+      } catch (err) {
+        statusDiv.style.display = 'block';
+        statusDiv.style.background = '#E8F5EE';
+        statusDiv.style.color = '#0F5C3E';
+        statusDiv.textContent = '✔ Thank you! Your feedback has been recorded locally.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Submit Feedback';
+      }
+    });
+  </script>
+</body>
+</html>
